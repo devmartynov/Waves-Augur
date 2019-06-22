@@ -106,6 +106,14 @@ const config: webpack.Configuration & CustomConfig = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader"
+        ]
+      }
     ],
   },
   resolve: {
@@ -114,12 +122,6 @@ const config: webpack.Configuration & CustomConfig = {
     enforceExtension: false, // If true, it will not allow extension-less files
   },
   plugins: [
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     host: JSON.stringify(processEnv.host),
-    //     port: JSON.stringify(processEnv.port),
-    //   },
-    // }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
       filename: 'index.html',
@@ -133,6 +135,7 @@ const config: webpack.Configuration & CustomConfig = {
           loader: 'ts-loader',
           options: {
             happyPackMode: true,
+            
           },
         },
       ],

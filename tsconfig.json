@@ -1,26 +1,51 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "compilerOptions": {
+        "sourceMap": true,
+        "allowJs": false,
+        "target": "es5",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "pretty": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "noUnusedLocals": false,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "outDir": "./dist/",
+        "typeRoots": [
+          "node_modules/@types",
+          "src/types"
+        ],
+        "lib": [
+          "dom",
+          "es2018"
+        ],
+        "skipLibCheck": true,
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "tags": [
+          "styled",
+          "styled<",
+          "css"
+        ]
+      }
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "experimentalDecorators": true
-  },
-  "include": [
-    "src"
-  ]
-}
+    "extensions": [".ts", ".tsx", ".js", ".jsx"],
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules",
+      "bower_components",
+      "static",
+      "tmp"
+    ]
+  }
+  
