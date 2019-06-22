@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route, Switch} from 'react-router';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {ConnectedRouter} from 'react-router-redux';
 import _get from 'lodash-es/get';
 
-import {store} from 'components';
-import {registerRoutes} from '../../../actions/routing';
+import { store } from 'components';
+import { registerRoutes } from '../../../actions/routing';
 
-export default
-@connect(
-    state => ({
-        pathname: _get(state, 'routing.location.pathname'),
-    })
-)
 class Router extends React.PureComponent {
 
     static propTypes = {
@@ -83,5 +77,10 @@ class Router extends React.PureComponent {
             />
         );
     }
-
 }
+
+export default connect(
+    state => ({
+        pathname: _get(state, 'routing.location.pathname'),
+    })
+)(Router)

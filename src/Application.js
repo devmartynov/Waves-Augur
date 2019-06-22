@@ -2,8 +2,8 @@ import React from 'react';
 import Router from 'ui/nav/Router';
 import navigationHoc from 'ui/nav/navigationHoc';
 
-import {ui} from 'components';
-import Layout from 'shared/Layout';
+import { ui } from './components';
+import Layout from './shared/Layout';
 import routesTree from './routes';
 
 // Automatically import all views from yii-steroids
@@ -14,8 +14,7 @@ ui.addFields(require.context('./ui', true, /Field.js$/));
 ui.addFormatters(require.context('./ui', true, /Formatter.js$/));
 
 
-@navigationHoc(routesTree)
-export default class Application extends React.PureComponent {
+class Application extends React.PureComponent {
 
     static treeToList(item) {
         let items = [item];
@@ -28,11 +27,14 @@ export default class Application extends React.PureComponent {
     }
 
     render() {
+
         return (
             <Router
                 wrapperView={Layout}
                 routes={Application.treeToList(routesTree)}
             />
-        );
+        )
     }
 }
+
+export default navigationHoc(routesTree)(Application);

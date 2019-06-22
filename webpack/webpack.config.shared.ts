@@ -52,11 +52,38 @@ const config: webpack.Configuration & CustomConfig = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true,
+              cacheDirectory: true
             },
           },
           'happypack/loader?id=ts',
         ],
+      },
+      {
+        test: /\.(js|jsx)?$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react"
+              ],
+              plugins: [
+                [
+                  "@babel/plugin-proposal-decorators",
+                  {
+                    "legacy": true
+                  }
+                ],
+                [
+                  "@babel/plugin-proposal-class-properties",
+                  {
+                    "loose": true
+                  }
+                ]
+              ]
+            }
+        }
       },
       {
         test: /\.(png)$/,
@@ -120,6 +147,17 @@ const config: webpack.Configuration & CustomConfig = {
     modules: ['node_modules', srcPath],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'], // Automatically resolve certain extensions
     enforceExtension: false, // If true, it will not allow extension-less files
+    alias: {
+      actions: __dirname + '/../src/actions',
+      components: __dirname + '/../src/components',
+      enums: __dirname + '/../src/enums',
+      reducers: __dirname + '/../src/reducers',
+      shared: __dirname + '/../src/shared',
+      ui: __dirname + '/../src/ui',
+      style: __dirname + '/../src/style',
+      types: __dirname + '/../src/types',
+      static: __dirname + '/../src/static',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -135,7 +173,6 @@ const config: webpack.Configuration & CustomConfig = {
           loader: 'ts-loader',
           options: {
             happyPackMode: true,
-            
           },
         },
       ],

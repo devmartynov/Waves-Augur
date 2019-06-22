@@ -1,12 +1,23 @@
 {
-    "presets": [
-        "@babel/preset-env"
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
     ],
-    "plugins": [
-      "@babel/plugin-syntax-dynamic-import",
-      "ramda",
-      ["import", { "libraryName": "antd", "style": "true" }],
-      "babel-plugin-styled-components",
-      "react-hot-loader/babel"
-    ]
-  }
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    "babel-plugin-styled-components",
+    "react-hot-loader/babel"
+  ]
+}
