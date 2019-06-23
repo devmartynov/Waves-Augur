@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Button from 'ui/form/Button/Button';
 
-
 import AboutTab from './AboutTab';
 import LinksTab from './LinksTab';
 import WaitingTab from './WaitingTab';

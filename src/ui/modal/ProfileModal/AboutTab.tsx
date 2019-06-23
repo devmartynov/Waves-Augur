@@ -1,9 +1,9 @@
 import React from 'react';
 import InputField from 'ui/form/InputField';
 import Button from 'ui/form/Button/Button';
-import SvgIcon from 'components/global/common/SvgIcon';
+// import SvgIcon from 'components/global/common/SvgIcon';
 
-
+import InputTag from 'ui/form/InputTag';
 import { html } from 'components';
 const bem: any = html.bem('AboutTab');
 
@@ -29,7 +29,14 @@ const AboutTab: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
                     <div>
                         <label>Use ‘Enter’ to add a hashtag (10 max)</label>
                         <InputField placeholder="Enter Tags"/>
-                        <div></div>
+                        <div>
+                            <InputTag>Management</InputTag>
+                            <InputTag>Analytics</InputTag>
+                            <InputTag>Research and Development</InputTag>
+                            <InputTag>Management</InputTag>
+                            <InputTag>Analytics</InputTag>
+                            <InputTag>Research and Development</InputTag>
+                        </div>
                     </div>
                 </div>
                 <div>

@@ -112,6 +112,8 @@ $main-green: #0BC91F;
             & > :nth-child(2) input {
                 width: 389px;
             }
+
+            grid-template-columns: 30% auto 106px;
         }
 
         & > :nth-child(1) { 
@@ -121,14 +123,15 @@ $main-green: #0BC91F;
                 width: 130px;
             }
         }
-        & > :nth-child(2) { 
-            grid-template-columns: 30% 70%;
-        }
-        & > :nth-child(3) { 
-            grid-template-columns: 30% 70%;
-        }
-        & > :nth-child(4) { 
-            grid-template-columns: 30% 70%;
-        }
+
+        // & > :nth-child(2) { 
+        //     grid-template-columns: 30% auto 106px
+        // }
+        // & > :nth-child(3) { 
+        //     grid-template-columns: 30% auto 106px
+        // }
+        // & > :nth-child(4) { 
+        //     grid-template-columns: 30% auto 106px
+        // }
     }
 }
