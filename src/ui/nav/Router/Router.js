@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Route, Switch} from 'react-router';
+import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
-import {ConnectedRouter} from 'react-router-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import _get from 'lodash-es/get';
 
 import { store } from 'components';
-import { registerRoutes } from '../../../actions/routing';
+import { registerRoutes } from 'actions/routing';
 
 class Router extends React.PureComponent {
 
@@ -39,6 +39,7 @@ class Router extends React.PureComponent {
 
     render() {
         const WrapperComponent = this.props.wrapperView;
+
         const routes = (
             <Switch>
                 {this.props.routes.map((route, index) => (
