@@ -41,18 +41,6 @@ export default class FieldLayoutView extends React.PureComponent {
                 this.props.layout === 'horizontal' && 'row',
                 this.props.layout === 'inline' && 'form-inline mb-0'
             )}>
-                {this.props.label && (
-                    <label className={bem(
-                        bem.element('label', {
-                            required: this.props.required
-                        }),
-                        this.props.layout === 'horizontal' && 'col-form-label text-right',
-                        this.props.layout === 'horizontal' && 'col-' + this.props.layoutProps.cols[0],
-                        this.props.layout === 'inline' && 'sr-only',
-                    )}>
-                        {this.props.label + ':'}
-                    </label>
-                )}
                 <div
                     className={bem(
                         bem.element('field'),

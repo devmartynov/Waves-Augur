@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import {html} from 'components';
 import Button from 'ui/form/Button';
 import Link from 'ui/nav/Link';
+import InviteUserModal from 'shared/InviteUserModal';
+import { openModal } from 'actions/modal';
 
 import './IndexPage.scss';
 
 const bem = html.bem('IndexPage');
 
+@connect()
 export default class IndexPage extends React.PureComponent {
 
     static propTypes = {};
@@ -29,15 +33,17 @@ export default class IndexPage extends React.PureComponent {
                                     </p>
                                 </div>
                                 <div className={bem.element('hero-actions')}>
-                                    <Button
+                                    <button
                                         className={bem.element('hero-action', 'primary')}
-                                        label={__('Add project')}
-                                        onClick={() => console.log('add project')}
-                                    />
-                                    <Link
+                                        onClick={() => this.props.dispatch(openModal(InviteUserModal, {isWhale: false}))}
+                                    >
+                                        {__('Add project')}
+                                    </button>
+                                    <a
                                         className={bem.element('hero-action', 'secondary')}
-                                        label={__('Find project')}
-                                    />
+                                    >
+                                        {__('Find project')}
+                                    </a>
                                 </div>
                             </div>
                             <div

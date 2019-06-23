@@ -1,3 +1,6 @@
+@import '../../../style/helpers/vars';
+@import '../../../style/helpers/mixins';
+
 .ModalView {
   &__modal {
     position: absolute;
@@ -20,7 +23,8 @@
   }
 
   &__inner {
-    width: 500px;
+    width: 100%;
+    max-width: 760px;
     min-height: 350px;
     background: #fff;
   }
@@ -31,7 +35,6 @@
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    border-bottom: 1px solid #e9ecef;
     position: relative;
   }
 
@@ -73,6 +76,12 @@
 
   &__content {
     padding: 15px;
+
+    @include tablet {
+      padding-left: 126px;
+      padding-right: 126px;
+      padding-bottom: 37px;
+    }
   }
 }
 

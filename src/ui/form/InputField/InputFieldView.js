@@ -25,7 +25,7 @@ export default class InputFieldView extends React.PureComponent {
 
     render() {
         return (
-            <>
+            <div className={bem.element('container')}>
                 {this.props.label && (
                     <label className={bem.element('label')}>
                         {this.props.label}
@@ -45,7 +45,7 @@ export default class InputFieldView extends React.PureComponent {
                     disabled={this.props.disabled}
                     required={this.props.required}
                 />
-            </>
+            </div>
         );
     }
 
