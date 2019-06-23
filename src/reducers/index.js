@@ -18,7 +18,7 @@ export {
     modal,
     routing,
     navigation,
-};
+}; 
 
 export default combineReducers({
     form,

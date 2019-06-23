@@ -8,7 +8,7 @@ import './IndexPage.scss';
 
 const bem = html.bem('IndexPage');
 
-import ProfilePopup from 'components/global/popups/ProfilePopup/index';
+import ProfilePopup from 'ui/modal/ProfileModal';
 
 export default class IndexPage extends React.PureComponent {
 
