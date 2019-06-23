@@ -75,3 +75,6 @@
     }
   }
 }
+
+@mixin tablet-horizontal { @content; }
+@mixin phone-horizontal { @content; }
