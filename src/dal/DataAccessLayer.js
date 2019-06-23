@@ -91,12 +91,13 @@ let dummyUser = {
       data: {
         fee: {
           assetId: "WAVES",
-          tokens: "0.005"
+          tokens: "0.009"
         },
         dApp: "3NBB3iv7YDRsD8ZM2Pw2V5eTcsfqh3j2mvF",
         call: {
           args: [
-            {type: "string", value: JSON.stringify(userdata)}
+            {type: "string", value: JSON.stringify(userdata)},
+            {type: "string", value: "" }
           ],
           function: "signup"
         },

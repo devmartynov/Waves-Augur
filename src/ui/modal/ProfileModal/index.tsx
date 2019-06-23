@@ -29,7 +29,8 @@ class ProfilePopup extends React.Component {
         this.state = {
             isOpened: false,
             formState: {},
-            currentTab: 0
+            currentTab: 0,
+            isSendingAllowed: false
         }
 
         this.tabs = [
@@ -47,7 +48,11 @@ class ProfilePopup extends React.Component {
         this.setState({ isOpened: true });
     }
 
-    onNext = (tab: number) => { 
+    onNext = (tab: number) => {
+        if (tab === 3) {
+            this.setState({ isSendingAllowed: true });
+        }
+
         if (tab < this.tabs.length) this.setState({ currentTab: tab });
     }
 
@@ -56,8 +61,18 @@ class ProfilePopup extends React.Component {
     }
 
     onFormSubmit = (formState: any) => {
-        if (this.state.currentTab === 2) {
+        if (this.state.isSendingAllowed) {
             console.log({ formState, tb: this.state.currentTab });
+
+            (async () => {
+                try {
+                    const tx = await window.DAL.setUserRegisterOrUpdate(formState);
+                    const signResponse = await window.WavesKeeper.signAndPublishTransaction(tx);
+                    console.log({ signResponse });
+                    window.alert(JSON.stringify({ signResponse }));
+                    this.onClose();
+                } catch (e) {}
+            })();
         }
     }
 

@@ -21,7 +21,7 @@ class AboutTab extends React.Component<React.HTMLAttributes<HTMLDivElement>> {
         super(props);
 
         this.state = {
-            tags: []
+            tags: [],
         }
     }
 
@@ -40,7 +40,7 @@ class AboutTab extends React.Component<React.HTMLAttributes<HTMLDivElement>> {
     }
 
     render () {
-        const { onTagAdd, connectUserImage } = this;
+        const { connectUserImage } = this;
         const { tags } = this.state;
 
         return (
