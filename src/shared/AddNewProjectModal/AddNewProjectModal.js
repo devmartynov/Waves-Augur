@@ -5,6 +5,7 @@ import Form from 'ui/form/Form';
 import InputField from 'ui/form/InputField';
 import TextField from 'ui/form/TextField';
 import Button from 'ui/form/Button';
+import FormProgress from 'shared/FormProgress';
 
 import {html} from 'components';
 
@@ -32,14 +33,17 @@ export default class AddNewProjectModal extends React.PureComponent {
     }
 
     render() {
-
-        console.log(11, this.state);
-
         return (
             <Modal
                 {...this.props.modalProps}
                 className={bem.block()}
             >
+                <div className={bem.element('form-progress')}>
+                    <FormProgress
+                        stepCount={STEPS_COUNT}
+                        step={this.state.step}
+                    />
+                </div>
                 <div className={bem.element('form')}>
                     <Form
                         action={''}

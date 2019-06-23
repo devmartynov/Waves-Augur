@@ -2,10 +2,18 @@
 @import '../../style/helpers/mixins';
 
 .FormProgress {
+  $root: &;
+
+  display: flex;
+  align-items: center;
+
   &__item {
+    position: relative;
     width: 6px;
     height: 6px;
     background-color: $color-gg-4;
+
+    transform: rotate(45deg);
 
     &:not(:last-child) {
       margin-right: 72px;
@@ -15,6 +23,19 @@
       background-color: $color-brand-green;
     }
 
-    //&:not()
+    &:not(#{$root}_first) {
+      &::before {
+        transform: rotate(-45deg);
+        content: '';
+        display: block;
+        width: 72px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 1px;
+        background-color: $color-gg-4;
+        opacity: 0.5;
+      }
+    }
   }
 }

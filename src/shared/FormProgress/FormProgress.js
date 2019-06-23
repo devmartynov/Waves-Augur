@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import _times from 'lodash-es/times';
 import {html} from 'components';
 
-
-import './ProfileBlock.scss';
+import './FormProgress.scss';
+const bem = html.bem('FormProgress');
 
 export default class FormProgress extends React.PureComponent {
 
@@ -25,7 +25,7 @@ export default class FormProgress extends React.PureComponent {
     render() {
         return (
             <div className={bem.block()}>
-                {this.props.step.map((item, index) => (
+                {_times(this.props.stepCount).map((item, index) => (
                     <div
                         key={index}
                         className={bem.element('item', {
