@@ -94,6 +94,7 @@ $main-green: #0BC91F;
     }
 
     &__grid {
+        padding: 20px;
 
         & > * {
             display: grid;
@@ -109,12 +110,12 @@ $main-green: #0BC91F;
 
         & > :not(:nth-child(1)) {
             & > :nth-child(2) input {
-                width: 372px;
+                width: 389px;
             }
         }
 
         & > :nth-child(1) { 
-            grid-template-columns: 30% 25% auto 106px;
+            grid-template-columns: 30% auto auto 106px;
 
             & button {
                 width: 130px;
