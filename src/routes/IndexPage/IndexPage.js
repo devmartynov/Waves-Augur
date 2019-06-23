@@ -1,12 +1,14 @@
 import React from 'react';
 
-import {html} from 'components';
+import { html } from 'components';
 import Button from 'ui/form/Button';
 import Link from 'ui/nav/Link';
 
 import './IndexPage.scss';
 
 const bem = html.bem('IndexPage');
+
+import ProfilePopup from 'components/global/popups/ProfilePopup/index';
 
 export default class IndexPage extends React.PureComponent {
 
@@ -15,6 +17,7 @@ export default class IndexPage extends React.PureComponent {
     render() {
         return (
             <>
+                <ProfilePopup />
                 <div className={bem.block()}>
                     <section className={bem.element('hero')}>
                         <div className={bem.element('hero-inner')}>
