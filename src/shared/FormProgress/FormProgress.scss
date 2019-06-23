@@ -2,5 +2,19 @@
 @import '../../style/helpers/mixins';
 
 .FormProgress {
+  &__item {
+    width: 6px;
+    height: 6px;
+    background-color: $color-gg-4;
 
+    &:not(:last-child) {
+      margin-right: 72px;
+    }
+
+    &_filled {
+      background-color: $color-brand-green;
+    }
+
+    //&:not()
+  }
 }

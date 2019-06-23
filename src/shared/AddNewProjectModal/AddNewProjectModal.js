@@ -109,12 +109,12 @@ export default class AddNewProjectModal extends React.PureComponent {
                 />
                 <InputField
                     label={__('Project Name')}
-                    attribute={'a'}
+                    attribute={'name'}
                     placeholder={__('Enter Your Project Name')}
                 />
                 <TextField
                     label={__('Srort Description')}
-                    attribute={'b'}
+                    attribute={'shortDescription'}
                     placeholder={__('Description')}
                 />
             </>
