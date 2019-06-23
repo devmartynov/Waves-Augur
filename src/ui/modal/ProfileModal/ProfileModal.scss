@@ -51,7 +51,7 @@ $main-green: #0BC91F;
     @mixin line {
         height: 1px;
         width: 106px;
-        background-color: grey;
+        background-color: rgb(171, 179, 172);
         position: relative;
         margin-left: 50%;
         top: 14px;
@@ -81,5 +81,53 @@ $main-green: #0BC91F;
         grid-template-columns: repeat(3, 1fr);
         width: 316px;
         margin: auto;
+    }
+}
+
+.AboutTab {
+    margin-bottom: auto;
+
+    label { 
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 14px;
+    }
+
+    &__grid {
+
+        & > * {
+            display: grid;
+            justify-items: center;
+            padding-top: 15px;
+            align-items: center;
+
+            & > :nth-child(2) {
+                justify-self: left;
+                text-align: left;
+            }
+        }
+
+        & > :not(:nth-child(1)) {
+            & > :nth-child(2) input {
+                width: 372px;
+            }
+        }
+
+        & > :nth-child(1) { 
+            grid-template-columns: 30% 25% auto 106px;
+
+            & button {
+                width: 130px;
+            }
+        }
+        & > :nth-child(2) { 
+            grid-template-columns: 30% 70%;
+        }
+        & > :nth-child(3) { 
+            grid-template-columns: 30% 70%;
+        }
+        & > :nth-child(4) { 
+            grid-template-columns: 30% 70%;
+        }
     }
 }
