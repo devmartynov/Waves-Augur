@@ -12,15 +12,19 @@ export default class ActionButtonBlock extends React.PureComponent {
 
     static propTypes = {
         title: PropTypes.string,
-        iconClass: PropTypes.string
+        iconClass: PropTypes.string,
+        handleClick: PropTypes.func,
     };
 
     render() {
         return (
-            <div className={bem.block()}>
+            <div
+                className={bem.block()}
+                onClick={this.props.handleClick}
+            >
                 <Link
                     //TODO: link path
-                    to={'/'}
+                    // to={'/'}
                 >
                     <div className={bem.element('container')}>
                         <div className={bem.element('inner')}>

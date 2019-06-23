@@ -96,6 +96,13 @@ $icons-dir: '../static/icons';
   }
 
   &__new-project {
+
+    &_lg {
+      min-width: 120px;
+      min-height: 120px;
+      background-image: url('#{$icons-dir}/new-project_lg.svg');
+    }
+
     min-width: 69px;
     min-height: 69px;
     background-image: url('#{$icons-dir}/new-project.svg');

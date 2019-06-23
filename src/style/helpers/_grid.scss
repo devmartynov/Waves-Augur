@@ -100,7 +100,7 @@ $col-width: percentage(100/$col-length)/100;
     width: $col-width * $i;
   }
 
-  .col_coffset-#{$i} {
+  .col_offset-#{$i} {
     margin-left: $col-width * $i;
   }
 

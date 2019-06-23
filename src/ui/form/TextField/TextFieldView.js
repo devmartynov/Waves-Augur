@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {html} from 'components';
+import './TextFieldView.scss';
 const bem = html.bem('TextFieldView');
 
 export default class TextFieldView extends React.PureComponent {
