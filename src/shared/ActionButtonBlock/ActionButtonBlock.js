@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'ui/nav/Link';
 
 import {html} from 'components';
+import Link from 'ui/nav/Link';
 
 import './ActionButtonBlock.scss';
 
@@ -21,6 +21,7 @@ export default class ActionButtonBlock extends React.PureComponent {
                 <Link
                     //TODO: link path
                     to={'/'}
+                    noStyles
                 >
                     <div className={bem.element('container')}>
                         <div className={bem.element('inner')}>

@@ -129,31 +129,31 @@ $icons-dir: '../static/icons';
     background-image: url('#{$icons-dir}/landing-rewards.svg');
   }
 
-  &__rocket-main {
+  &__rocket-graph-main {
     min-width: 60px;
     min-height: 60px;
     background-image: url('#{$icons-dir}/landing-rocket-main.svg');
   }
 
-  &__rocket {
+  &__rocket-graph {
     min-width: 115px;
     min-height: 120px;
     background-image: url('#{$icons-dir}/landing-rocket.svg');
   }
 
-  &__rocket-big {
+  &__rocket-graph-big {
     min-width: 115px;
     min-height: 120px;
     background-image: url('#{$icons-dir}/landing-rocket-big.svg');
   }
 
-  &__voting {
+  &__voting-graph {
     min-width: 60px;
     min-height: 60px;
     background-image: url('#{$icons-dir}/landing-voting.svg');
   }
 
-  &__voting-big {
+  &__voting-graph-big {
     min-width: 115px;
     min-height: 120px;
     background-image: url('#{$icons-dir}/landing-voting-big.svg');

@@ -80,14 +80,14 @@ export default class IndexPage extends React.PureComponent {
                                 <li className={bem.element('features-item')}>
                                     <span className={bem.element('features-label')}>{__('Crowdfunding')}</span>
                                     <span
-                                        className={bem(bem.element('features-icon'), 'Icon Icon__rocket-main')}
+                                        className={bem(bem.element('features-icon'), 'Icon Icon__rocket-graph-main')}
                                         aria-hidden
                                     />
                                 </li>
                                 <li className={bem.element('features-item')}>
                                     <span className={bem.element('features-label')}>{__('Votings')}</span>
                                     <span
-                                        className={bem(bem.element('features-icon'), 'Icon Icon__voting')}
+                                        className={bem(bem.element('features-icon'), 'Icon Icon__voting-graph')}
                                         aria-hidden
                                     />
                                 </li>
@@ -117,7 +117,7 @@ export default class IndexPage extends React.PureComponent {
                                 <li className={bem.element('process-item')}>
                                     <span className={bem.element('process-label')}>{__('Proposal')}</span>
                                     <span
-                                        className={bem(bem.element('process-icon'), 'Icon Icon__rocket-big')}
+                                        className={bem(bem.element('process-icon'), 'Icon Icon__rocket-graph-big')}
                                         aria-hidden
                                     />
                                     <span className={bem(bem.element('process-icon'), 'Icon Icon__arrow')} style={{position: 'absolute'}}></span>
@@ -125,7 +125,7 @@ export default class IndexPage extends React.PureComponent {
                                 <li className={bem.element('process-item')}>
                                     <span className={bem.element('process-label')}>{__('Voting')}</span>
                                     <span
-                                        className={bem(bem.element('process-icon'), 'Icon Icon__voting-big')}
+                                        className={bem(bem.element('process-icon'), 'Icon Icon__voting-graph-big')}
                                         aria-hidden
                                     />
                                 </li>
@@ -153,7 +153,7 @@ export default class IndexPage extends React.PureComponent {
                                 <li className={bem.element('process-item')}>
                                     <span className={bem.element('process-label')}>{__('Launch')}</span>
                                     <span
-                                        className={bem(bem.element('process-icon'), 'Icon Icon__rocket')}
+                                        className={bem(bem.element('process-icon'), 'Icon Icon__rocket-graph')}
                                         aria-hidden
                                     />
                                 </li>

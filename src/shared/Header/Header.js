@@ -57,6 +57,7 @@ export default class Header extends React.PureComponent {
                     <Link
                         className={bem.element('logo')}
                         to={this.props.indexPageUrl}
+                        noStyles
                     >
                         <img
                             className={bem.element('logo-image')}
@@ -87,6 +88,7 @@ export default class Header extends React.PureComponent {
                                 className={bem.element('login-link')}
                                 to='/'
                                 label={__('Login')}
+                                noStyles
                             />
                         )}
                     </div>
@@ -126,6 +128,7 @@ export default class Header extends React.PureComponent {
                                 to={menuItem.url}
                                 label={menuItem.title}
                                 onClick={() => this.onMenuClick(menuItem.url)}
+                                noStyles
                             />
                         </li>
                     ))}
@@ -149,6 +152,7 @@ export default class Header extends React.PureComponent {
                                 to={navItem.url}
                                 label={navItem.title}
                                 onClick={() => this.onMenuClick(navItem.url)}
+                                noStyles
                             />
                         </li>
                     ))}
