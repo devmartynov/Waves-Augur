@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Button from 'ui/form/Button/Button';
+import { Form, Field } from 'react-final-form'
 
 import AboutTab from './AboutTab';
 import LinksTab from './LinksTab';
@@ -10,12 +11,15 @@ import ProgressLine from './ProgressLine';
 import { html } from 'components';
 const bem: any = html.bem('ProfileModal');
 
+import FormContext from './context';
+
 import './ProfileModal.scss';
 
 class ProfilePopup extends React.Component {
-    state: { 
+    state: {
         isOpened: boolean;
         currentTab: number;
+        formState: any;
     };
     tabs: React.ReactNode[];
 
@@ -24,13 +28,14 @@ class ProfilePopup extends React.Component {
 
         this.state = {
             isOpened: false,
+            formState: {},
             currentTab: 0
         }
 
         this.tabs = [
-            <WaitingTab className={bem.element('body-inner')}/>,
-            <LinksTab className={bem.element('body-inner')}/>,
-            <AboutTab className={bem.element('body-inner')}/>
+            <WaitingTab className={bem.element('body-inner')} />,
+            <LinksTab className={bem.element('body-inner')} />,
+            <AboutTab className={bem.element('body-inner')} />
         ];
     }
 
@@ -43,14 +48,21 @@ class ProfilePopup extends React.Component {
     }
 
     onNext = (tab: number) => { 
-        if (tab < this.tabs.length) this.setState({ currentTab: tab })
+        if (tab < this.tabs.length) this.setState({ currentTab: tab });
     }
+
     onBack = (tab: number) => {
         if (tab >= 0) this.setState({ currentTab: tab });
     }
 
+    onFormSubmit = (formState: any) => {
+        if (this.state.currentTab === 2) {
+            console.log({ formState, tb: this.state.currentTab });
+        }
+    }
+
     render () {
-        const { onBack, onNext, onClose, onOpen } = this;
+        const { onBack, onNext, onClose, onOpen, onFormSubmit } = this;
         const { isOpened, currentTab } = this.state;
 
         const visibleTab: React.ReactNode = this.tabs
@@ -60,16 +72,34 @@ class ProfilePopup extends React.Component {
             <div className={bem.block()}>
                 <button onClick={onOpen}>open modal</button>
                 <Modal open={isOpened} onClose={onClose}>
-                    <div className={bem.element('body')}>
-                        <ProgressLine index={currentTab}/>
-                        {visibleTab}
-                        <div className={bem.element('buttons-cont')}>
-                            {currentTab > 0 ? (
-                                <Button className="base-green outline" onClick={() => onBack(currentTab - 1)}>Back</Button>
-                            ) : <div></div>}
-                            <Button className="base-green" onClick={() => onNext(currentTab + 1)}>Next</Button>
-                        </div>
-                    </div>
+                    <Form
+                        onSubmit={onFormSubmit}
+                        render={({ handleSubmit, values }) => (
+                            <FormContext.Provider value={values}>
+                                <form onSubmit={handleSubmit}>
+                                    <div className={bem.element('body')}>
+                                        <ProgressLine index={currentTab}/>
+                                        {visibleTab}
+                                        <div className={bem.element('buttons-cont')}>
+                                            {currentTab > 0 ? (
+                                                <Button 
+                                                    className="base-green outline" 
+                                                    onClick={() => onBack(currentTab - 1)}>
+                                                    Back
+                                                </Button>
+                                            ) : <div></div>}
+                                            <Button
+                                                type="submit"
+                                                onClick={() => onNext(currentTab + 1)}
+                                                className="base-green">
+                                                Next
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </FormContext.Provider>
+                        )}
+                    />
                 </Modal>
             </div>
         )

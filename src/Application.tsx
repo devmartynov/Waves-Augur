@@ -13,6 +13,7 @@ ui.addViews(require.context('./ui', true, /View.js?$/));
 ui.addFields(require.context('./ui', true, /Field.js$/));
 ui.addFormatters(require.context('./ui', true, /Formatter.js$/));
 
+import DAL from './dal/DataAccessLayer';
 
 class Application extends React.PureComponent {
 
@@ -24,6 +25,11 @@ class Application extends React.PureComponent {
             });
         }
         return items;
+    }
+
+    componentDidMount () {
+        // @ts-ignore
+        window.DAL = DAL;
     }
 
     render() {
