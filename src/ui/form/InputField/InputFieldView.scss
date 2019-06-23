@@ -1,6 +1,7 @@
 @import '../../../style/helpers/vars';
 
 .InputFieldView {
+  display: flex;
   padding: 13px 20px;
   background-color: $color-base;
   color: $color-base-revert;
@@ -8,14 +9,20 @@
   border: 1px solid $color-brand-light-green;
   border-radius: 3px;
   font-family: $ff-roboto;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 18px;
   line-height: 24px;
   outline: none;
   width: 100%;
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   &::placeholder {
     color: $color-gg-4;
+    font-weight: 100;
   }
 
   &:hover {
@@ -41,4 +48,13 @@
       cursor: not-allowed;
     }
   }
+
+  //&__label {
+  //  font-style: normal;
+  //  font-weight: 100;
+  //  font-size: 13px;
+  //  line-height: 14px;
+  //  color: $color-gg-4;
+  //  margin-bottom: 4px;
+  //}
 }
