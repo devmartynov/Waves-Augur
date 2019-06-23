@@ -5,7 +5,7 @@ import {
 
 type SvgIconProps = {
   icon: string;
-}
+} & React.HTMLAttributes<HTMLSpanElement>;
 
 const SvgIcon: React.FC<SvgIconProps> = ({ icon, ...restProps }) => (
   <StyledSvgIcon 

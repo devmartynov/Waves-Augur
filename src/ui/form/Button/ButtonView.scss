@@ -25,6 +25,12 @@
     height: 50px;
     font-size: 18px;
     background-color: #0BC91F;
-    color: #fff;    
+    color: #fff;
+    border:none;
+    border-radius: 3px;
+  }
+  &.base-green.outline {
+    background-color: #fff;
+    color: #0BC91F;
   }
 }

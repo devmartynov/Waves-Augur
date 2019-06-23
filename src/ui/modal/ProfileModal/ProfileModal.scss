@@ -1,4 +1,5 @@
 
+$main-green: #0BC91F;
 
 .ProfileModal {
 
@@ -9,6 +10,11 @@
         left: calc(50% - 380px);
         top: calc(50% - 340px);
         background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+
     }
 
     &__body-inner {
@@ -16,9 +22,64 @@
         flex-direction: column;
         width: 230px;
         margin: auto;
-        text-align: center;
-        height: 100%;
+        height: calc(100% - 100px);
         justify-content: space-around;
-        padding: 60px 0;
+        padding: 30px 0;
+    }
+
+    &__buttons-cont {
+        margin-bottom: 25px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+}
+
+.LinksTab {
+    &__grid {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        padding: 40px 60px;
+        grid-row-gap: 20px;
+        align-items: center;
+    }
+}
+
+.ProgressLine {
+    padding: 30px 0;
+
+    @mixin line {
+        height: 1px;
+        width: 106px;
+        background-color: grey;
+        position: relative;
+        margin-left: 50%;
+        top: 14px;
+    }
+
+    &__line-first {
+        @include line;
+        margin-left: calc(50% - 106px);
+        top: 15px;
+    }
+
+    &__line-second {
+        @include line;
+    }
+
+    .passed-line { background-color: $main-green }
+    .passed-dot {
+        z-index: 3;
+
+        & svg > * { 
+            fill: $main-green;
+        }
+    }
+
+    &__dots-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 316px;
+        margin: auto;
     }
 }

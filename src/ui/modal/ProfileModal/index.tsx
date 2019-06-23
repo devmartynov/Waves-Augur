@@ -1,30 +1,38 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import FormInput from 'components/global/form/FormInput';
-import SvgIcon from 'components/global/common/SvgIcon';
-// import BaseButton from 'components/global/form/BaseButton';
-import InputField from 'ui/form/InputField';
 import Button from 'ui/form/Button/Button';
 
-import { html } from 'components';
-const bem = html.bem('ProfileModal');
 
-import {
-  profileSvg,
-  arrowDown
-} from 'ui/icon/index';
+import AboutTab from './AboutTab';
+import LinksTab from './LinksTab';
+import WaitingTab from './WaitingTab';
+import ProgressLine from './ProgressLine';
+
+import { html } from 'components';
+const bem: any = html.bem('ProfileModal');
 
 import './ProfileModal.scss';
 
 class ProfilePopup extends React.Component {
-    state: { isOpened: boolean };
+    state: { 
+        isOpened: boolean;
+        currentTab: number;
+    };
+    tabs: React.ReactNode[];
 
     constructor (props: any) {
         super(props);
 
         this.state = {
-            isOpened: false
+            isOpened: false,
+            currentTab: 0
         }
+
+        this.tabs = [
+            <WaitingTab className={bem.element('body-inner')}/>,
+            <LinksTab className={bem.element('body-inner')}/>,
+            <AboutTab className={bem.element('body-inner')}/>
+        ];
     }
 
     onClose = () => {
@@ -35,24 +43,33 @@ class ProfilePopup extends React.Component {
         this.setState({ isOpened: true });
     }
 
+    onNext = (tab: number) => { 
+        if (tab < this.tabs.length) this.setState({ currentTab: tab })
+    }
+    onBack = (tab: number) => {
+        if (tab >= 0) this.setState({ currentTab: tab });
+    }
+
     render () {
-        const { isOpened } = this.state;
+        const { onBack, onNext, onClose, onOpen } = this;
+        const { isOpened, currentTab } = this.state;
+
+        const visibleTab: React.ReactNode = this.tabs
+            .filter((tab: React.ReactNode, tabIndex: number) => tabIndex === currentTab)[0];
 
         return (
             <div className={bem.block()}>
-                <button onClick={this.onOpen}>open modal</button>
-                <Modal open={isOpened} onClose={this.onClose}>
+                <button onClick={onOpen}>open modal</button>
+                <Modal open={isOpened} onClose={onClose}>
                     <div className={bem.element('body')}>
-                        <div className={bem.element('body-inner')}>
-                            <h3>We were waiting for you!</h3>
-                            <span>You was invited by Tinh Tran</span>
-                            <SvgIcon icon={profileSvg}/>
-                            <h3>Please Register to Continue</h3>
-                            <SvgIcon icon={arrowDown}/>
-                            <span>Your Nickname (Your Log In)</span>
-                            <InputField name="nickname"/>
-                            <Button className="base-green">Next</Button>
-                        </div> 
+                        <ProgressLine index={currentTab}/>
+                        {visibleTab}
+                        <div className={bem.element('buttons-cont')}>
+                            {currentTab > 0 ? (
+                                <Button className="base-green outline" onClick={() => onBack(currentTab - 1)}>Back</Button>
+                            ) : <div></div>}
+                            <Button className="base-green" onClick={() => onNext(currentTab + 1)}>Next</Button>
+                        </div>
                     </div>
                 </Modal>
             </div>
