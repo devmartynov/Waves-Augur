@@ -7,6 +7,9 @@ import TextField from 'ui/form/TextField';
 import Button from 'ui/form/Button';
 import FormProgress from 'shared/FormProgress';
 import FieldSet from 'ui/form/FieldSet';
+import DateField from 'ui/form/DateField';
+import TagsField from 'ui/form/TagsField';
+import ConnectImageField from 'ui/form/ConnectImageField';
 
 import {html} from 'components';
 
@@ -155,6 +158,32 @@ export default class AddNewProjectModal extends React.PureComponent {
                     attribute={'shortDescription'}
                     placeholder={__('Description')}
                 />
+                <div className={bem.element('deadlines')}>
+                    <DateField
+                        className={bem.element('deadlines-field')}
+                        attribute='crowdfunding'
+                        label={__('Crowdfunding')}
+                    />
+                    <DateField
+                        className={bem.element('deadlines-field')}
+                        attribute='grantDecision'
+                        label={__('Grant decision')}
+                    />
+                </div>
+                <div className={bem.element('tags')}>
+                    <TagsField
+                        attribute='hashtags'
+                        label='Use ‘Enter’ to add a hashtag'
+                        placeholder={__('Enter Tags')}
+                    />
+                </div>
+                <div className={bem.element('logo')}>
+                    <ConnectImageField
+                        attribute='logoUrl'
+                        placeholder={__('Enter URL')}
+                    />
+                </div>
+
             </>
         );
     }

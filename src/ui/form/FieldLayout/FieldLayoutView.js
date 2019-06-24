@@ -39,7 +39,8 @@ export default class FieldLayoutView extends React.PureComponent {
                 }),
                 'form-group',
                 this.props.layoutClassName,
-                this.props.layout === 'horizontal' && 'row',
+                // this.props.layout === 'horizontal' && 'row',
+                this.props.layout === 'horizontal' && 'form-row',
                 this.props.layout === 'inline' && 'form-inline mb-0'
             )}>
                 {this.props.label && (
@@ -47,7 +48,8 @@ export default class FieldLayoutView extends React.PureComponent {
                         bem.element('label', {
                             required: this.props.required
                         }),
-                        this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[0],
+                        this.props.layout === 'horizontal' && 'form-label-col',
+                        // this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[0],
                         // this.props.layout === 'inline' && 'sr-only',
                     )}>
                         {this.props.label}
@@ -56,8 +58,9 @@ export default class FieldLayoutView extends React.PureComponent {
                 <div
                     className={bem(
                         bem.element('field'),
-                        this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[1],
-                        this.props.layout === 'horizontal' && !this.props.label && 'col col_offset-' + this.props.layoutProps.cols[0],
+                        this.props.layout === 'horizontal' && 'form-field-col',
+                        // this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[1],
+                        // this.props.layout === 'horizontal' && !this.props.label && 'col col_offset-' + this.props.layoutProps.cols[0],
                         this.props.layout === 'inline' && 'w-100'
                     )}
                 >
