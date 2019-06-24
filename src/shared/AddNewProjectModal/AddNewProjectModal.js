@@ -164,4 +164,39 @@ export default class AddNewProjectModal extends React.PureComponent {
             </>
         );
     }
+
+    renderStepSeven() {
+        return (
+            <>
+                <InputField
+                    label={__('Project Website')}
+                    attribute={'website'}
+                    placeholder={__('Enter URL')}
+                />
+                <InputField
+                    label={__('Twitter')}
+                    attribute={'twitter'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__twitter'}
+                />
+                <InputField
+                    label={__('Facebook')}
+                    attribute={'facebook'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__facebook'}
+                />
+                <InputField
+                    label={__('Linkedin')}
+                    attribute={'linkedin'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__linkedin'}
+                />
+                <InputField
+                    label={__('E-mail')}
+                    attribute={'email'}
+                    placeholder={__('Enter URL')}
+                />
+            </>
+        )
+    }
 }
