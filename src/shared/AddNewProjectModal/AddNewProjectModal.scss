@@ -101,19 +101,16 @@
   &__buttons {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
   }
 
   &__button {
     &_back {
-      position: absolute;
-      top: 0;
-      left: -120px;
+      margin-right: 40px;
     }
 
     &_main-action {
-      position: relative;
-      left: 25px;
+
     }
   }
 

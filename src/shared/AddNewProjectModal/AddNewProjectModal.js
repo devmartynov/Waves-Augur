@@ -107,41 +107,39 @@ export default class AddNewProjectModal extends React.PureComponent {
                                         </>
                                     )}
                                 </div>
+                                <div className={bem.element('buttons')}>
+                                    {this.state.step !== 1 && (
+                                        <div className={bem.element('button', {
+                                            back: true,
+                                            'step-seven': this.state.step === 7
+                                        })}>
+                                            <Button
+                                                label={__('Back')}
+                                                onClick={this.onBackStep}
+                                                likeString
+                                            />
+                                        </div>
+                                    )}
+                                    {this.state.step !== STEPS_COUNT && (
+                                        <div className={bem.element('button', 'next')}>
+                                            <Button
+                                                label={__('Next')}
+                                                onClick={this.onNextStep}
+                                            />
+                                        </div>
+                                    )}
+                                    {this.state.step === STEPS_COUNT && (
+                                        <div className={bem.element('button','main-action')}>
+                                            <Button
+                                                type={'submit'}
+                                                label={__('Create Project')}
+                                                onClick={() => console.log('created')}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
                             </Form>
                         </div>
-                    </div>
-                    <div className={bem.element('buttons')}>
-                        {this.state.step !== 1 && (
-                            <div className={bem.element('button', {
-                                back: true,
-                                'step-seven': this.state.step === 7
-                            })}>
-                                <Button
-                                    label={__('Back')}
-                                    onClick={this.onBackStep}
-                                    likeString
-                                />
-                            </div>
-                        )}
-                        {this.state.step !== STEPS_COUNT && (
-                            <div className={bem.element('button', 'next')}>
-                                <Button
-                                    label={__('Next')}
-                                    onClick={this.onNextStep}
-                                />
-                            </div>
-                        )}
-                        {this.state.step === STEPS_COUNT && (
-                            <div className={bem.element('button', {
-                                'next': true,
-                                'main-action': true,
-                            })}>
-                                <Button
-                                    label={__('Create Project')}
-                                    onClick={() => console.log('created')}
-                                />
-                            </div>
-                        )}
                     </div>
                 </div>
             </Modal>
@@ -480,6 +478,7 @@ export default class AddNewProjectModal extends React.PureComponent {
                     <div className={bem.element('form-col-field')}>
                         <InputField
                             attribute={'website'}
+                            label={this.props.isPhone ? __('Project Website') : false}
                             placeholder={__('Enter URL')}
                         />
                     </div>
@@ -496,6 +495,7 @@ export default class AddNewProjectModal extends React.PureComponent {
                     <div className={bem.element('form-col-field')}>
                         <InputField
                             attribute={'twitter'}
+                            label={this.props.isPhone ? __('Twitter') : false}
                             placeholder={__('Enter URL')}
                         />
                     </div>
@@ -511,6 +511,7 @@ export default class AddNewProjectModal extends React.PureComponent {
                     </div>
                     <div className={bem.element('form-col-field')}>
                         <InputField
+                            label={this.props.isPhone ? __('Facebook') : false}
                             attribute={'facebook'}
                             placeholder={__('Enter URL')}
                         />
@@ -527,6 +528,7 @@ export default class AddNewProjectModal extends React.PureComponent {
                     </div>
                     <div className={bem.element('form-col-field')}>
                         <InputField
+                            label={this.props.isPhone ? __('Linkedin') : false}
                             attribute={'linkedin'}
                             placeholder={__('Enter URL')}
                         />
@@ -541,39 +543,11 @@ export default class AddNewProjectModal extends React.PureComponent {
                     <div className={bem.element('form-col-field')}>
                         <InputField
                             attribute={'email'}
+                            label={this.props.isPhone ? __('E-mail') : false}
                             placeholder={__('Enter URL')}
                         />
                     </div>
                 </div>
-
-                {/*<InputField
-                    label={__('Project Website')}
-                    attribute={'website'}
-                    placeholder={__('Enter URL')}
-                />
-                <InputField
-                    label={__('Twitter')}
-                    attribute={'twitter'}
-                    placeholder={__('Enter URL')}
-                    labeIconClass={'Icon Icon__twitter'}
-                />
-                <InputField
-                    label={__('Facebook')}
-                    attribute={'facebook'}
-                    placeholder={__('Enter URL')}
-                    labeIconClass={'Icon Icon__facebook'}
-                />
-                <InputField
-                    label={__('Linkedin')}
-                    attribute={'linkedin'}
-                    placeholder={__('Enter URL')}
-                    labeIconClass={'Icon Icon__linkedin'}
-                />
-                <InputField
-                    label={__('E-mail')}
-                    attribute={'email'}
-                    placeholder={__('Enter URL')}
-                />*/}
             </>
         )
     }
