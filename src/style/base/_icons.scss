@@ -8,6 +8,10 @@ $icons-dir: '../static/icons';
   min-width: 16px;
   min-height: 16px;
 
+  &__close-small {
+    background-image: url('#{$icons-dir}/delete-tag.svg');
+  }
+
   &__calendar {
     min-width: 20px;
     min-height: 25px;
