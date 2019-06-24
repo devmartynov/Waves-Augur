@@ -8,6 +8,10 @@ $icons-dir: '../static/icons';
   min-width: 16px;
   min-height: 16px;
 
+  &__trash {
+    background-image: url('#{$icons-dir}/trash.svg');
+  }
+
   &__close-small {
     background-image: url('#{$icons-dir}/delete-tag.svg');
   }
@@ -64,6 +68,10 @@ $icons-dir: '../static/icons';
 
   &__instagram {
     background-image: url('#{$icons-dir}/instagram.svg');
+  }
+
+  &__linkedin {
+    background-image: url('#{$icons-dir}/linkedin.svg');
   }
 
   &__telegram {

@@ -12,6 +12,7 @@ export default class FieldLayoutView extends React.PureComponent {
             PropTypes.string,
             PropTypes.bool,
         ]),
+        labeIconClass: PropTypes.string,
         hint: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.bool,
@@ -52,6 +53,9 @@ export default class FieldLayoutView extends React.PureComponent {
                         // this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[0],
                         // this.props.layout === 'inline' && 'sr-only',
                     )}>
+                        {this.props.labeIconClass && (
+                            <span className={this.props.labeIconClass}/>
+                        )}
                         {this.props.label}
                     </label>
                 )}*/}

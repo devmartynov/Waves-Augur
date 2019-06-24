@@ -57,8 +57,12 @@
   }
 
   &__form-inner {
+    display: flex;
+    flex-direction: column;
+
     @include phone-horizontal {
       display: flex;
+      flex-direction: row;
     }
   }
 
@@ -71,11 +75,14 @@
   }
 
   &__icon {
-    display: none;
+    order: -1;
+    background-position-x: center;
     background-repeat: no-repeat;
+    margin-bottom: 50px;
 
     @include phone-horizontal {
-      display: block;
+      margin-bottom: 0;
+      order: 0;
     }
   }
 

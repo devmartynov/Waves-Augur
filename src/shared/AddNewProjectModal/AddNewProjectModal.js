@@ -7,7 +7,6 @@ import InputField from 'ui/form/InputField';
 import TextField from 'ui/form/TextField';
 import Button from 'ui/form/Button';
 import FormProgress from 'shared/FormProgress';
-import FieldSet from 'ui/form/FieldSet';
 import DateField from 'ui/form/DateField';
 import TagsField from 'ui/form/TagsField';
 import ConnectImageField from 'ui/form/ConnectImageField';
@@ -101,13 +100,22 @@ export default class AddNewProjectModal extends React.PureComponent {
                                             {this.renderStepSix()}
                                         </>
                                     )}
+
+                                    {this.state.step === 7 && (
+                                        <>
+                                            {this.renderStepSeven()}
+                                        </>
+                                    )}
                                 </div>
                             </Form>
                         </div>
                     </div>
                     <div className={bem.element('buttons')}>
                         {this.state.step !== 1 && (
-                            <div className={bem.element('button', 'back')}>
+                            <div className={bem.element('button', {
+                                back: true,
+                                'step-seven': this.state.step === 7
+                            })}>
                                 <Button
                                     label={__('Back')}
                                     onClick={this.onBackStep}
@@ -120,6 +128,17 @@ export default class AddNewProjectModal extends React.PureComponent {
                                 <Button
                                     label={__('Next')}
                                     onClick={this.onNextStep}
+                                />
+                            </div>
+                        )}
+                        {this.state.step === STEPS_COUNT && (
+                            <div className={bem.element('button', {
+                                'next': true,
+                                'main-action': true,
+                            })}>
+                                <Button
+                                    label={__('Create Project')}
+                                    onClick={() => console.log('created')}
                                 />
                             </div>
                         )}
@@ -443,5 +462,119 @@ export default class AddNewProjectModal extends React.PureComponent {
                 </div>
             </>
         );
+    }
+
+    renderStepSeven() {
+        return (
+            <>
+                <div className={bem.element('sub-title')}>
+                    {__('Contacts')}
+                </div>
+
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Project Website')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            attribute={'website'}
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            <span className={bem.element('form-col-label-icon')}>
+                                <span className={'Icon Icon__twitter'}/>
+                            </span>
+                            <span>{__('Twitter')}</span>
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            attribute={'twitter'}
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            <span className={bem.element('form-col-label-icon')}>
+                                <span className={'Icon Icon__facebook'}/>
+                            </span>
+                            <span>{__('Facebook')}</span>
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            attribute={'facebook'}
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            <span className={bem.element('form-col-label-icon')}>
+                                <span className={'Icon Icon__linkedin'}/>
+                            </span>
+                            <span>{__('Linkedin')}</span>
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            attribute={'linkedin'}
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('E-mail')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            attribute={'email'}
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+
+                {/*<InputField
+                    label={__('Project Website')}
+                    attribute={'website'}
+                    placeholder={__('Enter URL')}
+                />
+                <InputField
+                    label={__('Twitter')}
+                    attribute={'twitter'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__twitter'}
+                />
+                <InputField
+                    label={__('Facebook')}
+                    attribute={'facebook'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__facebook'}
+                />
+                <InputField
+                    label={__('Linkedin')}
+                    attribute={'linkedin'}
+                    placeholder={__('Enter URL')}
+                    labeIconClass={'Icon Icon__linkedin'}
+                />
+                <InputField
+                    label={__('E-mail')}
+                    attribute={'email'}
+                    placeholder={__('Enter URL')}
+                />*/}
+            </>
+        )
     }
 }

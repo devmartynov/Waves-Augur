@@ -8,8 +8,10 @@
     left: 50%;
     transform: translateX(-50%);
     outline: none;
-    border: 1px solid rgba(0,0,0,0.2);
     max-width: 760px;
+    padding: 0 20px;
+    border: none;
+    width: 100%;
   }
 
   &__overlay {

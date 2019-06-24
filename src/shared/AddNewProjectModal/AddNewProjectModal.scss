@@ -40,9 +40,18 @@
 
     display: none;
 
+    & > label {
+      display: flex;
+      align-items: center;
+    }
+
     @include tablet {
       display: block;
     }
+  }
+
+  &__form-col-label-icon {
+    margin-right: 10px;
   }
 
   &__form-col-field {
@@ -100,6 +109,11 @@
       position: absolute;
       top: 0;
       left: -120px;
+    }
+
+    &_main-action {
+      position: relative;
+      left: 25px;
     }
   }
 
