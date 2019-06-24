@@ -9,6 +9,7 @@
     transform: translateX(-50%);
     outline: none;
     border: 1px solid rgba(0,0,0,0.2);
+    max-width: 760px;
   }
 
   &__overlay {
@@ -29,16 +30,6 @@
     min-height: 350px;
     background: #fff;
   }
-
-  //&__header {
-  //  font-size: 20px;
-  //  color: #333;
-  //  display: flex;
-  //  justify-content: space-between;
-  //  padding: 15px;
-  //  border-bottom: 1px solid #e9ecef;
-  //  position: relative;
-  //}
 
   &__close {
     position: absolute;
