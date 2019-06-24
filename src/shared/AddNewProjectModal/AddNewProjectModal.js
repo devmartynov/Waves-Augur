@@ -266,12 +266,12 @@ export default class AddNewProjectModal extends React.PureComponent {
                         <div className={bem.element('targets')}>
                             <InputField
                                 label={this.props.isPhone ? __('Waves') : false}
-                                attribute={'name'}
+                                attribute={'target'}
                                 placeholder={__('Enter Your Project Name')}
                             />
                             <DateField
-                                attribute='grantDecision'
-                                label={__('Grant decision')}
+                                attribute='demo-day'
+                                label={__('Demo day')}
                             />
                         </div>
                     </div>
