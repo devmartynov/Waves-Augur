@@ -133,29 +133,28 @@ class TagsField extends React.PureComponent {
                         </div>
                     )}
                 </div>
-                <div className={bem.element('skills')}>
-                    {this.getValues().length > 0 && (
+                {this.getValues().length > 0 && (
+                    <div className={bem.element('skills')}>
                         <ul className={bem.element('skill-list')}>
-                            {this.getValues()
-                                .map(value => (
-                                    <li
-                                        key={value}
-                                        className={bem.element('skill-item')}
-                                        title={value}
-                                    >
-                                        {value}
-                                        <span
-                                            className={bem(
-                                                bem.element('skill-remove'),
-                                                'Icon Icon__close-small'
-                                            )}
-                                            onClick={() => this._onRemove(value)}
-                                        />
-                                    </li>
-                                ))}
+                            {this.getValues().map(value => (
+                                <li
+                                    key={value}
+                                    className={bem.element('skill-item')}
+                                    title={value}
+                                >
+                                    {value}
+                                    <span
+                                        className={bem(
+                                            bem.element('skill-remove'),
+                                            'Icon Icon__close-small'
+                                        )}
+                                        onClick={() => this._onRemove(value)}
+                                    />
+                                </li>
+                            ))}
                         </ul>
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         );
     }

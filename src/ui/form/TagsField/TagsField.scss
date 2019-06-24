@@ -6,7 +6,6 @@
   &__field {
     position: relative;
     display: flex;
-    margin-bottom: 16px;
   }
 
   &__input {
@@ -31,6 +30,10 @@
 
   &__add-button-icon {
     transform: rotate(45deg);
+  }
+
+  &__skills {
+    margin-top: 16px;
   }
 
   &__skill-list {
