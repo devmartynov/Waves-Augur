@@ -1,6 +1,7 @@
 import React from 'react';
 import Router from 'ui/nav/Router';
 import navigationHoc from 'ui/nav/navigationHoc';
+import screenWatcherHoc from 'shared/screenWatcherHoc';
 
 import {ui} from 'components';
 import Layout from 'shared/Layout';
@@ -15,6 +16,7 @@ ui.addFormatters(require.context('./ui', true, /Formatter.js$/));
 
 
 @navigationHoc(routesTree)
+@screenWatcherHoc()
 export default class Application extends React.PureComponent {
 
     static treeToList(item) {

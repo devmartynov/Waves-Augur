@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from 'ui/modal/Modal';
 import Form from 'ui/form/Form';
@@ -10,6 +11,7 @@ import FieldSet from 'ui/form/FieldSet';
 import DateField from 'ui/form/DateField';
 import TagsField from 'ui/form/TagsField';
 import ConnectImageField from 'ui/form/ConnectImageField';
+import {isPhone} from 'reducers/screen';
 
 import {html} from 'components';
 
@@ -19,6 +21,12 @@ const bem = html.bem('AddNewProjectModal');
 const FORM_ID = 'AddNewProject';
 const STEPS_COUNT = 7;
 
+
+@connect(
+    state => ({
+        isPhone: isPhone(state),
+    })
+)
 export default class AddNewProjectModal extends React.PureComponent {
 
     static propTypes = {
@@ -56,10 +64,6 @@ export default class AddNewProjectModal extends React.PureComponent {
                             <Form
                                 action={''}
                                 formId={FORM_ID}
-                                layout={'horizontal'}
-                                layoutProps={{
-                                    cols: [3, 9]
-                                }}
                             >
                                 <div className={bem.element('title')}>
                                     {__('You Are Creating New Project')}
@@ -148,42 +152,34 @@ export default class AddNewProjectModal extends React.PureComponent {
                     bem.element('new-project-icon'),
                     'Icon Icon__new-project_lg')}
                 />
-                <InputField
-                    label={__('Project Name')}
-                    attribute={'name'}
-                    placeholder={__('Enter Your Project Name')}
-                />
-                <TextField
-                    label={__('Srort Description')}
-                    attribute={'shortDescription'}
-                    placeholder={__('Description')}
-                />
-                <div className={bem.element('deadlines')}>
-                    <DateField
-                        className={bem.element('deadlines-field')}
-                        attribute='crowdfunding'
-                        label={__('Crowdfunding')}
-                    />
-                    <DateField
-                        className={bem.element('deadlines-field')}
-                        attribute='grantDecision'
-                        label={__('Grant decision')}
-                    />
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Project Name')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            label={this.props.isPhone ? __('Project Name') : false}
+                            attribute={'name'}
+                            placeholder={__('Enter Your Project Name')}
+                        />
+                    </div>
                 </div>
-                <div className={bem.element('tags')}>
-                    <TagsField
-                        attribute='hashtags'
-                        label='Use ‘Enter’ to add a hashtag'
-                        placeholder={__('Enter Tags')}
-                    />
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Srort Description')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={this.props.isPhone ? __('Srort Description') : false}
+                            attribute={'shortDescription'}
+                            placeholder={__('Description')}
+                        />
+                    </div>
                 </div>
-                <div className={bem.element('logo')}>
-                    <ConnectImageField
-                        attribute='logoUrl'
-                        placeholder={__('Enter URL')}
-                    />
-                </div>
-
             </>
         );
     }
@@ -192,9 +188,105 @@ export default class AddNewProjectModal extends React.PureComponent {
         return (
             <>
                 <div className={bem.element('sub-title')}>
-                    {__('123')}
+                    {__('Campign Details')}
                 </div>
-                123
+
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Logo URL')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <ConnectImageField
+                            label={this.props.isPhone ? __('Logo URL') : false}
+                            attribute='logoUrl'
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Cover URL')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <ConnectImageField
+                            label={this.props.isPhone ? __('Cover URL') : false}
+                            attribute='coverUrl'
+                            placeholder={__('Enter URL')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Deadlines')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <div className={bem.element('deadlines')}>
+                            <DateField
+                                attribute='crowdfunding'
+                                label={__('Crowdfunding')}
+                            />
+                            <DateField
+                                attribute='grantDecision'
+                                label={__('Grant decision')}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Target (Waves)')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <div className={bem.element('targets')}>
+                            <InputField
+                                label={this.props.isPhone ? __('Waves') : false}
+                                attribute={'name'}
+                                placeholder={__('Enter Your Project Name')}
+                            />
+                            <DateField
+                                attribute='grantDecision'
+                                label={__('Grant decision')}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Tags')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <TagsField
+                            attribute='tags'
+                            label='Use ‘Enter’ to add a hashtag'
+                            placeholder={__('Enter Tags')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row')}>
+                    <div className={bem.element('form-col-label')}>
+                        <label>
+                            {__('Your Country')}
+                        </label>
+                    </div>
+                    <div className={bem.element('form-col-field')}>
+                        <InputField
+                            label={this.props.isPhone ? __('Your Country') : false}
+                            attribute={'country'}
+                            placeholder={__('Enter')}
+                        />
+                    </div>
+                </div>
             </>
         );
     }
@@ -205,23 +297,36 @@ export default class AddNewProjectModal extends React.PureComponent {
                 <div className={bem.element('sub-title')}>
                     {__('Idea Canvas')}
                 </div>
-                <FieldSet layout={'default'}>
-                    <TextField
-                        topHint={'Problem'}
-                        attribute={'problem'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Solution'}
-                        attribute={'solution'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'X-Factor'}
-                        attribute={'x-factor'}
-                        placeholder={__('Text')}
-                    />
-                </FieldSet>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Problem'}
+                            attribute={'problem'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Solution'}
+                            attribute={'solution'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'X-Factor'}
+                            attribute={'x-factor'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+
             </>
         );
     }
@@ -232,18 +337,25 @@ export default class AddNewProjectModal extends React.PureComponent {
                 <div className={bem.element('sub-title')}>
                     {__('Idea Canvas')}
                 </div>
-                <FieldSet layout={'default'}>
-                    <TextField
-                        topHint={'MVP'}
-                        attribute={'mvp'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Large Scale Adoption'}
-                        attribute={'large-scale-adoption'}
-                        placeholder={__('Text')}
-                    />
-                </FieldSet>
+
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'MVP'}
+                            attribute={'mvp'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Large Scale Adoption'}
+                            attribute={'large-scale-adoption'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
             </>
         );
     }
@@ -254,23 +366,34 @@ export default class AddNewProjectModal extends React.PureComponent {
                 <div className={bem.element('sub-title')}>
                     {__('Idea Canvas')}
                 </div>
-                <FieldSet layout={'default'}>
-                    <TextField
-                        topHint={'Impact on User'}
-                        attribute={'impact-on-user'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Impact on User Context'}
-                        attribute={'impact-on-user-context'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Impact on User Society'}
-                        attribute={'impact-on-user-society'}
-                        placeholder={__('Text')}
-                    />
-                </FieldSet>
+
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Impact on User'}
+                            attribute={'impact-on-user'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Impact on User Context'}
+                            attribute={'impact-on-user-context'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Impact on User Society'}
+                            attribute={'impact-on-user-society'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
             </>
         );
     }
@@ -281,28 +404,43 @@ export default class AddNewProjectModal extends React.PureComponent {
                 <div className={bem.element('sub-title')}>
                     {__('Idea Canvas')}
                 </div>
-                <FieldSet layout={'default'}>
-                    <TextField
-                        topHint={'Code Validation'}
-                        attribute={'code-validation'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Legal Arrangements'}
-                        attribute={'legal-arrangements'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Open-source strategy'}
-                        attribute={'open-source-strategy'}
-                        placeholder={__('Text')}
-                    />
-                    <TextField
-                        topHint={'Interconnectedness'}
-                        attribute={'interconnectedness'}
-                        placeholder={__('Text')}
-                    />
-                </FieldSet>
+
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Code Validation'}
+                            attribute={'code-validation'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Legal Arrangements'}
+                            attribute={'legal-arrangements'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Open-source strategy'}
+                            attribute={'open-source-strategy'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
+                <div className={bem.element('form-row', 'margin-bottom')}>
+                    <div className={bem.element('form-col-field')}>
+                        <TextField
+                            label={'Interconnectedness'}
+                            attribute={'interconnectedness'}
+                            placeholder={__('Text')}
+                        />
+                    </div>
+                </div>
             </>
         );
     }

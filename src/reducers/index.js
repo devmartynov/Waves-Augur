@@ -8,6 +8,7 @@ import notifications from './notifications';
 import modal from './modal';
 import routing from './routing';
 import navigation from './navigation';
+import screen from './screen';
 
 export {
     form,
@@ -18,6 +19,7 @@ export {
     modal,
     routing,
     navigation,
+    screen,
 };
 
 export default combineReducers({
@@ -29,4 +31,5 @@ export default combineReducers({
     modal,
     routing,
     navigation,
+    screen,
 });

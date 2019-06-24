@@ -1,29 +1,23 @@
 @import '../../../style/helpers/vars';
 
 .FieldLayoutView {
-  margin-bottom: 30px;
-
-  &_layout_horizontal {
-    align-items: center;
-  }
-
   &__field {
     position: relative;
   }
 
+  //&__label {
+  //  font-weight: 300;
+  //  color: $color-gg-4;
+  //
+  //  //&_required:after {
+  //  //  display: inline-block;
+  //  //  content: '*';
+  //  //  color: red;
+  //  //  margin: 0 0 0 3px;
+  //  //}
+  //}
+
   &__label {
-    font-weight: 300;
-    color: $color-gg-4;
-
-    &_required:after {
-      display: inline-block;
-      content: '*';
-      color: red;
-      margin: 0 0 0 3px;
-    }
-  }
-
-  &__top-hint {
     position: absolute;
     top: -17px;
 
@@ -32,9 +26,9 @@
     font-size: 13px;
     line-height: 14px;
 
-    &_layout_horizontal {
-      left: calc(#{$grid-offset-tablet} / 2);
-    }
+    //&_layout_horizontal {
+    //  left: calc(#{$grid-offset-tablet} / 2);
+    //}
 
   }
 
