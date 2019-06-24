@@ -8,6 +8,28 @@ $icons-dir: '../static/icons';
   min-width: 16px;
   min-height: 16px;
 
+  &__calendar {
+    min-width: 20px;
+    min-height: 25px;
+    background-image: url('#{$icons-dir}/calendar.svg');
+    opacity: 0.5;
+
+    &_dark-grey {
+      background-image: url('#{$icons-dir}/calendar-dark-grey.svg');
+      opacity: 1;
+    }
+
+    &_green {
+      background-image: url('#{$icons-dir}/calendar-green.svg');
+      opacity: 1;
+    }
+
+    @include icon-hover {
+      background-image: url('#{$icons-dir}/calendar-dark-grey.svg');
+      opacity: 1;
+    }
+  }
+
   &__checkbox-true {
     background-image: url('#{$icons-dir}/checkbox-true.svg');
   }
@@ -201,6 +223,5 @@ $icons-dir: '../static/icons';
     min-height: 31px;
     background-image: url('#{$icons-dir}/landing-arrow.svg');
   }
-
 
 }
