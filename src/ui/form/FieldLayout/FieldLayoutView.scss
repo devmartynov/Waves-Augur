@@ -10,6 +10,13 @@
   &__label {
     font-weight: 300;
     color: $color-gg-4;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+
+    .Icon {
+      margin-right: 15px;
+    }
 
     &_required:after {
       display: inline-block;
