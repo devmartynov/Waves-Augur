@@ -37,13 +37,14 @@ export default class InviteUserModal extends React.PureComponent {
                     <Form
                         className={bem.element('form')}
                         formId={FORM_ID}
+                        layout={'default'}
                     >
                         <div className={bem.element('form-inner')}>
                             <div className={bem.element('group')}>
                                 <InputField
                                     className={bem.element('nickname')}
                                     attribute='nickname'
-                                    label={__('User’s Nickname (Optional)')}
+                                    topHint={__('User’s Nickname (Optional)')}
                                     placeholder={__('Nickname')}
                                 />
                                 <CheckboxField
@@ -59,13 +60,13 @@ export default class InviteUserModal extends React.PureComponent {
                         <InputField
                             className={bem.element('address')}
                             attribute='wavesAddress'
-                            label={__('Waves Address')}
+                            topHint={__('Waves Address')}
                             placeholder={__('Enter New User’s Waves Adress')}
                         />
                         <TextField
                             className={bem.element('message')}
                             attribute='message'
-                            label={__('Your Message')}
+                            topHint={__('Your Message')}
                             placeholder={__('Enter Your Message for New User')}
                         />
                         <div className={bem.element('action')}>
@@ -73,6 +74,7 @@ export default class InviteUserModal extends React.PureComponent {
                                 className={bem.element('action')}
                                 label={__('Invite')}
                                 color='primary'
+                                type={'submit'}
                             />
                         </div>
                     </Form>

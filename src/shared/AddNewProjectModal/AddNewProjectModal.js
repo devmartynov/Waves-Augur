@@ -112,6 +112,7 @@ export default class AddNewProjectModal extends React.PureComponent {
                     'Icon Icon__new-project_lg')}
                 />
                 <InputField
+                    topHint={__('Project Name')}
                     label={__('Project Name')}
                     attribute={'name'}
                     placeholder={__('Enter Your Project Name')}
