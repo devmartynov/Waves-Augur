@@ -17,6 +17,7 @@ export default class FieldLayoutView extends React.PureComponent {
             PropTypes.string,
             PropTypes.bool,
         ]),
+        topHint: PropTypes.string,
         errors: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.arrayOf(PropTypes.string),
@@ -64,6 +65,13 @@ export default class FieldLayoutView extends React.PureComponent {
                         this.props.layout === 'inline' && 'w-100'
                     )}
                 >
+                    {this.props.topHint && (
+                        <span className={bem.element('top-hint', {
+                            layout: this.props.layout
+                        })}>
+                            {this.props.topHint}
+                        </span>
+                    )}
                     {this.props.children}
                     {this.props.errors && (
                         <div className={bem(bem.element('invalid-feedback'), 'invalid-feedback')}>

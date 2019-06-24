@@ -18,9 +18,26 @@
   box-sizing: border-box;
   min-height: 50px;
   outline: none;
+  cursor: pointer;
 
   &:hover, &:focus {
     box-shadow: 0 0 30px rgba(12, 112, 23, 0.1);
+  }
+
+  &_like-string {
+    padding: 0;
+    background-color: transparent !important;
+    color: $color-brand-green !important;
+    font-weight: 300;
+
+    &:hover, &:focus {
+      box-shadow: none;
+      font-weight: 500;
+    }
+
+    &:active {
+      color: $color-brand-light-green;
+    }
   }
 
   &:active {

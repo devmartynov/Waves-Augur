@@ -3,39 +3,46 @@
 
 .FormProgress {
   $root: &;
+  $item-width: 6px;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
-  &__item {
+  &__item-container {
+    width: 100%;
     position: relative;
-    width: 6px;
-    height: 6px;
+    display: flex;
+    align-items: center;
+
+    &_first {
+      width: $item-width;
+    }
+  }
+
+  &__point {
+    width: $item-width;
+    height: $item-width;
     background-color: $color-gg-4;
 
     transform: rotate(45deg);
 
-    &:not(:last-child) {
-      margin-right: 72px;
-    }
-
     &_filled {
       background-color: $color-brand-green;
     }
+  }
 
-    &:not(#{$root}_first) {
-      &::before {
-        transform: rotate(-45deg);
-        content: '';
-        display: block;
-        width: 72px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 1px;
-        background-color: $color-gg-4;
-        opacity: 0.5;
-      }
+  &__line {
+    display: block;
+    width: 99%;
+    height: 1px;
+    background-color: $color-gg-4;
+    opacity: 0.5;
+
+    &_filled {
+      background-color: $color-brand-green;
+      opacity: 1;
     }
   }
 }

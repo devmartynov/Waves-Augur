@@ -1,5 +1,42 @@
 .AddNewProjectModal {
 
+  $root: &;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_step_3,
+  &_step_4,
+  &_step_5,
+  &_step_6 {
+    .FieldLayoutView {
+      margin-bottom: 38px;
+    }
+  }
+
+  &__inner {
+    padding-top: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &__form-progress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 17px;
+    width: 100%;
+  }
+
   &__new-project-icon {
     margin: 30px 0;
   }
@@ -15,8 +52,25 @@
   &__sub-title {
     font-weight: 300;
     text-align: center;
+    margin-bottom: 30px;
   }
 
-  &__form {
+  &__buttons {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__button {
+    &_back {
+      position: absolute;
+      top: 0;
+      left: -120px;
+    }
+
+    &_main-action {
+      position: relative;
+      left: 25px;
+    }
   }
 }
