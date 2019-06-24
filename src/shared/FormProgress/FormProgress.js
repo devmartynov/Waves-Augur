@@ -15,10 +15,6 @@ export default class FormProgress extends React.PureComponent {
 
     constructor() {
         super(...arguments);
-
-        this.state = {
-            step: this.props.step,
-        };
     }
 
 
@@ -26,13 +22,23 @@ export default class FormProgress extends React.PureComponent {
         return (
             <div className={bem.block()}>
                 {_times(this.props.stepCount).map((item, index) => (
+
+
                     <div
                         key={index}
-                        className={bem.element('item', {
-                            first: index === 1,
-                            filled: index <= this.state.step,
+                        className={bem.element('item-container', {
+                            first: index === 0,
                         })}
-                    />
+                    >
+                        {index > 0 && (
+                            <div className={bem.element('line', {
+                                filled: index <= (this.props.step - 1),
+                            })}/>
+                        )}
+                        <div className={bem.element('point', {
+                            filled: index <= (this.props.step - 1),
+                        })}/>
+                    </div>
                 ))}
             </div>
         );
