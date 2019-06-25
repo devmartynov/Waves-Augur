@@ -60,13 +60,13 @@ export default class InviteUserModal extends React.PureComponent {
                         <InputField
                             className={bem.element('address')}
                             attribute='wavesAddress'
-                            topHint={__('Waves Address')}
+                            label={__('Waves Address')}
                             placeholder={__('Enter New User’s Waves Adress')}
                         />
                         <TextField
                             className={bem.element('message')}
                             attribute='message'
-                            topHint={__('Your Message')}
+                            label={__('Your Message')}
                             placeholder={__('Enter Your Message for New User')}
                         />
                         <div className={bem.element('action')}>
