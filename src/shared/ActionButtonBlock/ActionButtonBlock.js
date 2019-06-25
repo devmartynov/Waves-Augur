@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'ui/nav/Link';
 
 import {html} from 'components';
+import Link from 'ui/nav/Link';
 
 import './ActionButtonBlock.scss';
 
@@ -12,15 +12,20 @@ export default class ActionButtonBlock extends React.PureComponent {
 
     static propTypes = {
         title: PropTypes.string,
-        iconClass: PropTypes.string
+        iconClass: PropTypes.string,
+        handleClick: PropTypes.func,
     };
 
     render() {
         return (
-            <div className={bem.block()}>
+            <div
+                className={bem.block()}
+                onClick={this.props.handleClick}
+            >
                 <Link
                     //TODO: link path
-                    to={'/'}
+                    // to={'/'}
+                    noStyles
                 >
                     <div className={bem.element('container')}>
                         <div className={bem.element('inner')}>

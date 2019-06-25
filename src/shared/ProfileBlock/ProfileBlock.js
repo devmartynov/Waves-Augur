@@ -11,6 +11,7 @@ import NavItemSchema from 'types/NavItemSchema';
 import './ProfileBlock.scss';
 
 const bem = html.bem('ProfileBlock');
+const DEFAULT_AVATAR_PATH = './static/images/avatar-stub.png';
 
 @connect()
 export default class ProfileBlock extends React.PureComponent {
@@ -41,7 +42,7 @@ export default class ProfileBlock extends React.PureComponent {
             <div className={bem.block()}>
                 <img
                     className={bem.element('avatar')}
-                    src={this.props.user.avatar || '/images/avatar-stub.png'}
+                    src={this.props.user.avatar || DEFAULT_AVATAR_PATH}
                     alt={this.props.user.name}
                 />
                 <div className={bem.element('inner')}>
@@ -73,15 +74,17 @@ export default class ProfileBlock extends React.PureComponent {
                                         to={menuItem.url}
                                         label={menuItem.title}
                                         onClick={() => this.onMenuClick(menuItem.url)}
+                                        noStyles
                                     />
                                 </li>
                             ))}
                             <li className={bem.element('menu-item')}>
-                                <Button
+                                <button
                                     className={bem.element('menu-link', 'logout')}
                                     onClick={() => console.log('logout')}
-                                    label={__('Log Out')}
-                                />
+                                >
+                                    {__('Log Out')}
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -89,6 +92,7 @@ export default class ProfileBlock extends React.PureComponent {
                 <Link
                     className={bem.element('notification')}
                     to={'/'}
+                    noStyles
                 >
                     <span className={bem(bem.element('notification-icon'), 'MaterialIcon')}>notifications</span>
                 </Link>

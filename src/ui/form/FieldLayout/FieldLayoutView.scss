@@ -1,15 +1,50 @@
-@import '~bootstrap/scss/_functions.scss';
-@import '~bootstrap/scss/_variables.scss';
+@import '../../../style/helpers/vars';
 
 .FieldLayoutView {
+  margin-bottom: 30px;
+
+  &_layout_horizontal {
+    align-items: center;
+  }
+
+  &__field {
+    position: relative;
+  }
+
   &__label {
+    font-weight: 300;
+    color: $color-gg-4;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+
+    .Icon {
+      margin-right: 15px;
+    }
+
     &_required:after {
       display: inline-block;
       content: '*';
-      color: $danger;
+      color: red;
       margin: 0 0 0 3px;
     }
   }
+
+  &__top-hint {
+    position: absolute;
+    top: -17px;
+
+    font-weight: 300;
+    color: $color-gg-4;
+    font-size: 13px;
+    line-height: 14px;
+
+    &_layout_horizontal {
+      left: calc(#{$grid-offset-tablet} / 2);
+    }
+
+  }
+
   &__invalid-feedback {
     display: block !important;
   }

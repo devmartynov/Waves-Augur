@@ -2,7 +2,7 @@ import React from 'react';
 import {push} from 'react-router-redux';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getNavItems, getNavItem} from 'reducers/navigation';
+import {getNavItems, getNavItem, getNavUrl} from 'reducers/navigation';
 import Link from 'ui/nav/Link';
 import Form from 'ui/form/Form';
 import InputField from 'ui/form/InputField';
@@ -25,6 +25,7 @@ const FORM_ID = 'search';
         navItems: getNavItems(state, RoutesEnum.MAIN),
         inboxPageNavItem: getNavItem(state, RoutesEnum.PROFILE_INBOX),
         profilePageNavItem: getNavItem(state, RoutesEnum.PROFILE),
+        indexPageUrl: getNavUrl(state, RoutesEnum.MAIN),
     })
 )
 export default class Header extends React.PureComponent {
@@ -33,6 +34,7 @@ export default class Header extends React.PureComponent {
         navItems: PropTypes.arrayOf(NavItemSchema),
         inboxPageNavItem: NavItemSchema,
         profilePageNavItem: NavItemSchema,
+        indexPageUrl: PropTypes.string,
     };
 
     constructor() {
@@ -52,15 +54,17 @@ export default class Header extends React.PureComponent {
         return (
             <header className={bem.block()}>
                 <div className={bem.element('inner')}>
-                    <div className={bem.element('profile')}>
-                        <ProfileBlock
-                            user={user}
-                            menuItems={[].concat(this.props.inboxPageNavItem, this.props.profilePageNavItem)}
+                    <Link
+                        className={bem.element('logo')}
+                        to={this.props.indexPageUrl}
+                        noStyles
+                    >
+                        <img
+                            className={bem.element('logo-image')}
+                            src='static/icons/logo.svg'
+                            alt='ventuary dao'
                         />
-                    </div>
-                    <div className={bem.element('logo')}>
-                        <span className='Icon Icon__logo'/>
-                    </div>
+                    </Link>
                     <div className={bem.element('nav')}>
                         <HeaderNav navItems={navItems}/>
                     </div>
@@ -72,6 +76,21 @@ export default class Header extends React.PureComponent {
                                 view={InputFieldSearchView}
                             />
                         </Form>
+                    </div>
+                    <div className={bem.element('profile')}>
+                        {user && (
+                            <ProfileBlock
+                                user={user}
+                                menuItems={[].concat(this.props.inboxPageNavItem, this.props.profilePageNavItem)}
+                            />
+                        ) || (
+                            <Link
+                                className={bem.element('login-link')}
+                                to='/'
+                                label={__('Login')}
+                                noStyles
+                            />
+                        )}
                     </div>
                     <button
                         className={bem(bem.element('menu-toggle'), 'material-icons')}
@@ -109,6 +128,7 @@ export default class Header extends React.PureComponent {
                                 to={menuItem.url}
                                 label={menuItem.title}
                                 onClick={() => this.onMenuClick(menuItem.url)}
+                                noStyles
                             />
                         </li>
                     ))}
@@ -132,6 +152,7 @@ export default class Header extends React.PureComponent {
                                 to={navItem.url}
                                 label={navItem.title}
                                 onClick={() => this.onMenuClick(navItem.url)}
+                                noStyles
                             />
                         </li>
                     ))}

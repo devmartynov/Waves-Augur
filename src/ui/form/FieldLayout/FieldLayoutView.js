@@ -12,10 +12,12 @@ export default class FieldLayoutView extends React.PureComponent {
             PropTypes.string,
             PropTypes.bool,
         ]),
+        labeIconClass: PropTypes.string,
         hint: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.bool,
         ]),
+        topHint: PropTypes.string,
         errors: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.arrayOf(PropTypes.string),
@@ -46,21 +48,30 @@ export default class FieldLayoutView extends React.PureComponent {
                         bem.element('label', {
                             required: this.props.required
                         }),
-                        this.props.layout === 'horizontal' && 'col-form-label text-right',
-                        this.props.layout === 'horizontal' && 'col-' + this.props.layoutProps.cols[0],
-                        this.props.layout === 'inline' && 'sr-only',
+                        this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[0],
+                        // this.props.layout === 'inline' && 'sr-only',
                     )}>
-                        {this.props.label + ':'}
+                        {this.props.labeIconClass && (
+                            <span className={this.props.labeIconClass}/>
+                        )}
+                        {this.props.label}
                     </label>
                 )}
                 <div
                     className={bem(
                         bem.element('field'),
-                        this.props.layout === 'horizontal' && 'col-' + this.props.layoutProps.cols[1],
-                        this.props.layout === 'horizontal' && !this.props.label && 'offset-' + this.props.layoutProps.cols[0],
+                        this.props.layout === 'horizontal' && 'col col_count-' + this.props.layoutProps.cols[1],
+                        this.props.layout === 'horizontal' && !this.props.label && 'col col_offset-' + this.props.layoutProps.cols[0],
                         this.props.layout === 'inline' && 'w-100'
                     )}
                 >
+                    {this.props.topHint && (
+                        <span className={bem.element('top-hint', {
+                            layout: this.props.layout
+                        })}>
+                            {this.props.topHint}
+                        </span>
+                    )}
                     {this.props.children}
                     {this.props.errors && (
                         <div className={bem(bem.element('invalid-feedback'), 'invalid-feedback')}>

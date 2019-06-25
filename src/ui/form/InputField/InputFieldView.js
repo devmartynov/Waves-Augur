@@ -25,27 +25,21 @@ export default class InputFieldView extends React.PureComponent {
 
     render() {
         return (
-            <>
-                {this.props.label && (
-                    <label className={bem.element('label')}>
-                        {this.props.label}
-                    </label>
+            <input
+                className={bem(
+                    bem.block({
+                        size: this.props.size,
+                        disabled: this.props.disabled,
+                        'is-invalid': this.props.isInvalid,
+                    }),
+                    this.props.className,
                 )}
-                <input
-                    className={bem(
-                        bem.block({
-                            size: this.props.size,
-                        }),
-                        this.props.isInvalid && 'is-invalid',
-                        this.props.className,
-                    )}
-                    {...this.props.inputProps}
-                    type={this.props.type}
-                    placeholder={this.props.placeholder}
-                    disabled={this.props.disabled}
-                    required={this.props.required}
-                />
-            </>
+                {...this.props.inputProps}
+                type={this.props.type}
+                placeholder={this.props.placeholder}
+                disabled={this.props.disabled}
+                required={this.props.required}
+            />
         );
     }
 

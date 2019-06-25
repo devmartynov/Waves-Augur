@@ -47,6 +47,7 @@ export default class ProfileContentFilter extends React.PureComponent {
                         >
                         <Link
                             to={item.url}
+                            noStyles
                         >
                             <div className={bem.element('nav-icon')}>
                                 <span className={`Icon ${item.isActive ? item.icon + '_green' : item.icon}`}/>
